@@ -1,0 +1,7 @@
+torch
+pyyaml==5.1
+Pillow
+albumentations
+opencv-python
+torchvision
+pyTelegramBotAPI
