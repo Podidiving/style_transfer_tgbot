@@ -155,8 +155,15 @@ def handle_photo(message):
                 handle_style(message.from_user.id, "car")
                 print(f"{message.from_user.id} done")
                 bot.send_message(message.from_user.id, "Готово")
-                del db[message.from_user.id]["style"]
-                del db[message.from_user.id]["style2"]
+                try:
+                    del db[message.from_user.id]["style"]
+                    del db[message.from_user.id]["style2"]
+                except KeyError:
+                    bot.send_message(message.from_user.id, "Отправляй по 1му фото")
+                    try:
+                        del db[message.from_user.id]
+                    except KeyError:
+                        return 
 
             else:
                 bot.send_message(message.from_user.id, "Сохраняю картинку со стилем для фона")
